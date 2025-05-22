@@ -13,20 +13,43 @@ public class BeerServiceImpl implements BeerService {
 
         return BeerDto.builder().id(UUID.randomUUID())
                 .beerName("Galaxy Cat")
-                .beerStyle("Pale Ale")
+                .beerStyle("PALE_ALE")
                 .upc(123456789012L)
                 .build();
     }
 
-    public String saveNewBeer(String beer) {
-        return "Saved Beer: " + beer;
+    @Override
+    public BeerDto saveNewBeer(BeerDto beerDto) {
+
+
+
+
+        return BeerDto.builder().id(UUID.randomUUID())
+                .beerName("Galaxy Cat")
+                .beerStyle("PALE_ALE")
+                .upc(123456789012L)
+                .build();
     }
 
-    public String updateBeer(String beerId, String beer) {
-        return "Updated Beer ID: " + beerId + ", Beer: " + beer;
+    @Override
+    public BeerDto updateBeerById(UUID beerId, BeerDto beerDto) {
+        // Simulate updating the beer object
+        // TODO: every field of beerDto that is not null will be updated, else use the existing value
+        BeerDto updatedBeer = BeerDto.builder()
+                .id(beerId)
+                .beerName(beerDto.getBeerName())
+                .beerStyle(beerDto.getBeerStyle())
+                .upc(beerDto.getUpc())
+                .build();
+
+
+
+        return updatedBeer;
     }
 
-    public void deleteById(String beerId) {
+
+    public void deleteById(UUID beerId) {
+
         System.out.println("Deleted Beer ID: " + beerId);
     }
 }
