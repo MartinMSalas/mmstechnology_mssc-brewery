@@ -52,7 +52,7 @@ public class BeerController {
         return new ResponseEntity<>(savedBeer,headers, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/{beerId}")
     public ResponseEntity<BeerDto> updateBeer(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
         // Simulate updating the beer object
         BeerDto updatedBeer = beerService.getBeerById(beerId);

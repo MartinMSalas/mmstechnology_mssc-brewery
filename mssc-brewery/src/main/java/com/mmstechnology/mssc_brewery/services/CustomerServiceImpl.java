@@ -24,9 +24,18 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDto saveNewCustomer(CustomerDto customerDto) {
-        customerDto.setCustomerId(UUID.randomUUID());
-        customerDto.setCustomerName("Martin Default Customer");
-        log.info("Saved Customer: " + customerDto);
+        log.info("Saving new customer: {}", customerDto);
+        if(customerDto.getCustomerId() != null){
+            customerDto.setCustomerId(customerDto.getCustomerId());
+        }else {
+            customerDto.setCustomerId(UUID.randomUUID());
+        }
+        if(customerDto.getCustomerName() != null) {
+            customerDto.setCustomerName(customerDto.getCustomerName());
+        }else {
+            customerDto.setCustomerName("Martin");
+        }
+        log.info("Saved Customer: {}", customerDto);
 
 
         return customerDto;
